@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const TestCaseForm = ({ onSubmit, initialData }) => {
-    const [testCase, setTestCase] = useState(initialData || { title: '', description: '' });
+    const [testCase, setTestCase] = useState(initialData || { scenario: '', steps: '' });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -11,18 +11,18 @@ const TestCaseForm = ({ onSubmit, initialData }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit(testCase);
-        setTestCase({ title: '', description: '' });
+        setTestCase({ scenario: '', steps: '' });
     };
 
     return (
         <form onSubmit={handleSubmit}>
             <div>
                 <label>
-                    Title:
+                    Test Scenario:
                     <input
                         type="text"
-                        name="title"
-                        value={testCase.title}
+                        name="scenario"
+                        value={testCase.scenario}
                         onChange={handleChange}
                         required
                     />
@@ -30,10 +30,10 @@ const TestCaseForm = ({ onSubmit, initialData }) => {
             </div>
             <div>
                 <label>
-                    Description:
+                    Test Steps:
                     <textarea
-                        name="description"
-                        value={testCase.description}
+                        name="steps"
+                        value={testCase.steps}
                         onChange={handleChange}
                         required
                     />
